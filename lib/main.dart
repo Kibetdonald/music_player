@@ -1,6 +1,10 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:music_player/screens/tracks.dart';
-import 'package:hexcolor/hexcolor.dart';
+// import 'package:hexcolor/hexcolor.dart';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:page_transition/page_transition.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,7 +36,14 @@ class MyApp extends StatelessWidget {
         primarySwatch: colorCustom,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Tracks(),
+
+      home: AnimatedSplashScreen(
+        splash: Image.asset('assets/images/logo.jpg'),
+        nextScreen: const Tracks(),
+        splashTransition: SplashTransition.rotationTransition,
+        pageTransitionType: PageTransitionType.leftToRight,
+        duration: 3000,
+      ),
     );
   }
 }
